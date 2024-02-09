@@ -2,12 +2,12 @@ import fs from "fs";
 const saveCitiesOnTxt = (cities) => {
   console.log("📝", "Saving cities on cities.txt...\n");
 
-  const initialSqlStatement = `INSERT INTO cities (id, state, description, ibge_code) VALUES`;
+  const initialSqlStatement = `INSERT INTO cities (state, description, ibge_code) VALUES`;
 
   const sqlStatement = cities.map((city, idx, arr) => {
     console.log("💅", "Actual city: ", city.description, "\n\n");
 
-    const sqlStatement = `(${city.id}, "${city.state}", "${city.description}", ${city.ibge_code})`;
+    const sqlStatement = `("${city.state}", "${city.description}", ${city.ibge_code})`;
 
     if (idx === 0) return `${initialSqlStatement} ${sqlStatement},`;
 

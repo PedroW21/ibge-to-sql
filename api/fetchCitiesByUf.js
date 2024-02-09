@@ -24,13 +24,7 @@ const getCitiesByUf = async (state) => {
     a.description.localeCompare(b.description, "pt-BR")
   );
 
-  console.log("👯", "Setting id on cities...\n");
-  const setIdOnCities = alphabeticallyOrderedCities.map((city, index) => ({
-    ...city,
-    id: index + 1,
-  }));
-
-  return setIdOnCities;
+  return alphabeticallyOrderedCities;
 };
 
 export default getCitiesByUf;
