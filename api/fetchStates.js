@@ -17,12 +17,17 @@ const getStateUfs = async () => {
     description: state.nome,
   }));
 
-  console.log('🙇‍♂️', 'Ordering by alphabetic\n')
+  console.log("🙇‍♂️", "Ordering by alphabetic\n");
   const statesByAlphabeticOrder = formattedStates.sort((a, b) =>
     a.description.localeCompare(b.description, "pt-BR")
   );
 
-  return statesByAlphabeticOrder;
+  const setIdForStates = statesByAlphabeticOrder.map((state, index) => ({
+    ...state,
+    id: index + 1,
+  }));
+
+  return setIdForStates;
 };
 
 export default getStateUfs;
