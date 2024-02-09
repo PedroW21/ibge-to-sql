@@ -9,7 +9,7 @@ const saveStateUfsOnTxt = (states) => {
   const statesTxt = states.map((state, idx, arr) => {
     console.log("💅", "Actual state: ", state.description, "\n\n");
 
-    const sqlStatement = `(${state.id}, "${state.description}", "${state.uf}", ${state.ibge_code})`;
+    const sqlStatement = `(${state.id}, "${state.description}", "${state.state}", ${state.ibge_code})`;
 
     if (idx === 0) return `${initialSqlStatement} ${sqlStatement},`;
 
