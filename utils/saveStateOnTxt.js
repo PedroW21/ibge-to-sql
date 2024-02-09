@@ -6,7 +6,7 @@ const saveStateUfsOnTxt = (states) => {
   const statesTxt = states.map((state) => {
     const sqlStatement = `
     INSERT INTO state_ufs (id, description, uf, ibge_code) 
-    VALUES (${state.id}, ${state.description}, '${state.state}', '${state.ibge_code}');`;
+    VALUES (${state.id}, '${state.description}', '${state.state}', '${state.ibge_code}');`;
 
     return sqlStatement;
   });

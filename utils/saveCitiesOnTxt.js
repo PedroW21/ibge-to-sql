@@ -4,7 +4,7 @@ const saveCitiesOnTxt = (cities) => {
 
   const sqlStatement = cities.map((city) => {
     console.log('💅', 'Actual city: ', city.description, '\n\n')
-    return `INSERT INTO cities (id, state, description, ibge_code) VALUES (${city.id}, ${city.state}, '${city.description}', ${city.ibge_code});`;
+    return `INSERT INTO cities (id, state, description, ibge_code) VALUES (${city.id}, '${city.state}', '${city.description}', ${city.ibge_code});`;
   });
 
   const dateInSeconds = new Date().getTime();
