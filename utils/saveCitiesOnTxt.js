@@ -2,9 +2,18 @@ import fs from "fs";
 const saveCitiesOnTxt = (cities) => {
   console.log("📝", "Saving cities on cities.txt...\n");
 
-  const sqlStatement = cities.map((city) => {
-    console.log('💅', 'Actual city: ', city.description, '\n\n')
-    return `INSERT INTO cities (id, state, description, ibge_code) VALUES (${city.id}, '${city.state}', '${city.description}', ${city.ibge_code});`;
+  const initialSqlStatement = `INSERT INTO cities (id, state, description, ibge_code) VALUES`;
+
+  const sqlStatement = cities.map((city, idx, arr) => {
+    console.log("💅", "Actual city: ", city.description, "\n\n");
+
+    const sqlStatement = `(${city.id}, "${city.state}", "${city.description}", ${city.ibge_code})`;
+
+    if (idx === 0) return `${initialSqlStatement} ${sqlStatement},`;
+
+    if (idx === arr.length - 1) return `${sqlStatement};`;
+
+    return `${sqlStatement},`;
   });
 
   const dateInSeconds = new Date().getTime();
